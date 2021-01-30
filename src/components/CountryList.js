@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Tag from './Tag';
 import { useGlobalContext } from '../context'
+import { BsPlusCircle } from 'react-icons/bs';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const CountryList = ({countries}) => {
   const { tags, setTags, showList, setShowList } = useGlobalContext();
@@ -30,15 +32,19 @@ const CountryList = ({countries}) => {
     setSearch(e.target.value);
   }
 
+  const setCloseEvent = () => {
+    setShowList(!showList);
+  }
+
   return(
     <section className="countrylist-container">
       <div>
-        <button
-          className="btn"
-          onClick={() => setShowList(!showList)}
-        >X</button>
+        <AiOutlineClose
+          className="btn btn-close"
+          onClick={setCloseEvent}
+        >X</AiOutlineClose>
       </div>
-      <div>
+      <div className="form-control">
         <input
           type="text"
           value={search}
@@ -47,13 +53,13 @@ const CountryList = ({countries}) => {
         <ul>
           {tempCountries.map((item, index) => {
             return(
-              <li key={index}>{item.name}<button onClick={() => addCountryToTag(item.name)}>+</button></li>
+              <li key={index}>{item.name}<BsPlusCircle className="btn btn-add" onClick={() => addCountryToTag(item.name)}>+</BsPlusCircle></li>
             )
           })}
         </ul>
       </div>
       <div>
-        {tags.map((item, index) => {
+        {tempTags.map((item, index) => {
           return <Tag key={index} name={item} />
         })}
       </div>

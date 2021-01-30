@@ -2,6 +2,7 @@
   background-color: #b2beb5;
   height: 100%;
   min-height: 100vh;
+  font-size: 18px;
 }
 .bg-dark{
   background-color: #b2beb5;
@@ -11,8 +12,34 @@
   background-color: #fff;
   border: 1px solid #b2beb5;
 }
+.btn{
+  border-radius: 5px;
+}
 /* search box */
 .searchbox-container{
+  position: absolute;
+  background-color: #fff;
+  height: 35%;
+  width: 30%;
+  border-radius: 15px;
+  left: 35%;
+  top: 20%;
+}
+.searchbox-form {
+  /* position: relative; */
+}
+.searchbox-form input[type=text]{
+  border: none;
+  width: 80%;
+  margin: auto;
+  border-bottom: 2px solid #b2beb5;
+  margin-top: 20px;
+}
+.form-control {
+  display: grid;
+}
+/* activity */
+.activity-container {
   position: absolute;
   background-color: #fff;
   height: 25%;
@@ -20,57 +47,58 @@
   border-radius: 15px;
   left: 35%;
   top: 40%;
+  align-items: center;
+  /* transform: translateX(-50%) translateY(-50%); */
+  justify-content: center;
+  text-align: center;
 }
-.searchbox-form input[type=text]{
-  border: none;
-  width: 80%;
-  margin: auto;
-  border-bottom: 2px solid #b2beb5;
+.activity-container p {
+  position: absolute;
+  left: 35%;
+  top: 35%;
+  height: 30%;
+  width: 30%;
+  color: #b2beb5;
 }
 /* tag */
 .tag-container{
+  padding: 5px;
   width: auto;
   height: auto;
+  display: inline-block;
+  float: left;
 }
-.btn{
-  border-radius: 5px;
+.btn-tag{
+  margin-top: 8px;
+  padding: 1px;
+}
+.btn-save{
+  height: 40px;
+  width: 40px;
+  margin-top: 15%;
+  margin-left: 85%;
 }
 /* country list */
 .countrylist-container{
   position: absolute;
+  display: block;
+  top: 0;
   background-color: #fff;
-  height: auto;
+  height: 500px;
   width: 100%;
+  border-radius: 15px;
 }
 .countrylist-container li{
   list-style: none;
+  padding: 5px 0;
+  font-size: 16px;
 }
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-close {
+  float: right;
+  margin: 5px 5px 0 0;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-add {
+  float: right;
+  margin-right: 30px;
+  border-radius: 50%;
 }

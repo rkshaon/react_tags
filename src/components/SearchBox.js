@@ -3,7 +3,7 @@ import Tag from './Tag';
 import CountryList from './CountryList';
 import country from '../data';
 import { useGlobalContext } from '../context'
-import { FiArrowRightCircle } from "react-icons/fi";
+import { AiOutlineRightCircle } from "react-icons/ai";
 
 const SearchBox = () => {
   const { tags, setTags, showList, setShowList } = useGlobalContext();
@@ -39,6 +39,10 @@ const SearchBox = () => {
     // console.log(tags);
   }
 
+  const setTagEvent = () => {
+    setShowList(!showList);
+  }
+
   const saveData = () => {
     // here api will be called to insert data
     setSave(!save);
@@ -46,8 +50,10 @@ const SearchBox = () => {
 
   if (save) {
     return(
-      <section className="searchbox-container">
-        activity saved
+      <section className="activity-container">
+        <p>
+          activity saved
+        </p>
       </section>
     )
   }
@@ -55,13 +61,15 @@ const SearchBox = () => {
   return(
     <section className="searchbox-container">
       <form className="searchbox-form" onSubmit={submitHandler}>
-        <input
-          autoFocus
-          type="text"
-          value={search}
-          onChange={searchValueUpdate}
-          placeholder="write your text here"
-        />
+        <div className="form-control">
+          <input
+            autoFocus
+            type="text"
+            value={search}
+            onChange={searchValueUpdate}
+            placeholder="write your text here"
+          />
+        </div>
         {showList ? <CountryList
             countries={countries}
           /> : <div></div>}
@@ -69,10 +77,13 @@ const SearchBox = () => {
           {tags.map((item, index) => {
             return <Tag key={index} name={item} />
           })}
-          {tags.length>0 ? <div>
-              <button className="btn bg-white" onClick={() => setShowList(!showList)}>+ add tag</button>
-              <FiArrowRightCircle onClick={saveData}>save</FiArrowRightCircle>
+          {tags.length>0 ? <div className="">
+              <button className="btn bg-white btn-tag" onClick={setTagEvent}>+ add tag</button>
             </div> : <div></div>}
+          {tags.length>0 ? <div className="">
+              <AiOutlineRightCircle className="btn-save" onClick={saveData}>save</AiOutlineRightCircle>
+            </div> : <div></div>}
+
         </div>
       </form>
     </section>
