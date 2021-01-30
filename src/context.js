@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { useCallback } from 'react'
+import React, { useState, useContext } from 'react'
 
 const AppContext = React.createContext()
 

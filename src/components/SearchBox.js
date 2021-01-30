@@ -3,16 +3,22 @@ import Tag from './Tag';
 import CountryList from './CountryList';
 import country from '../data';
 import { useGlobalContext } from '../context'
+import { FiArrowRightCircle } from "react-icons/fi";
 
 const SearchBox = () => {
   const { tags, setTags, showList, setShowList } = useGlobalContext();
   const [search, setSearch] = useState('');
   const [countries, setCountries] = useState({});
+  const [save, setSave] = useState(false);
 
   useEffect(() => {
+    fetchCountriesData();
+  }, [search]);
+
+  const fetchCountriesData = () => {
+    // here api will be called to fetch data
     setCountries(country);
-    // console.log(countries);
-  }, []);
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -33,6 +39,19 @@ const SearchBox = () => {
     // console.log(tags);
   }
 
+  const saveData = () => {
+    // here api will be called to insert data
+    setSave(!save);
+  }
+
+  if (save) {
+    return(
+      <section className="searchbox-container">
+        activity saved
+      </section>
+    )
+  }
+
   return(
     <section className="searchbox-container">
       <form className="searchbox-form" onSubmit={submitHandler}>
@@ -50,7 +69,10 @@ const SearchBox = () => {
           {tags.map((item, index) => {
             return <Tag key={index} name={item} />
           })}
-          {tags.length>0 ? <button className="btn bg-white" onClick={() => setShowList(!showList)}>+ add tag</button> : <div></div>}
+          {tags.length>0 ? <div>
+              <button className="btn bg-white" onClick={() => setShowList(!showList)}>+ add tag</button>
+              <FiArrowRightCircle onClick={saveData}>save</FiArrowRightCircle>
+            </div> : <div></div>}
         </div>
       </form>
     </section>

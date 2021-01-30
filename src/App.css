@@ -38,10 +38,9 @@
 /* country list */
 .countrylist-container{
   position: absolute;
-  background-color: aqua;
+  background-color: #fff;
   height: auto;
-  width: 80%;
-  left: 20%;
+  width: 100%;
 }
 .countrylist-container li{
   list-style: none;
