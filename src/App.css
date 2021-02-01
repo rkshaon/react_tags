@@ -42,11 +42,11 @@
 .activity-container {
   position: absolute;
   background-color: #fff;
-  height: 25%;
+  height: 35%;
   width: 30%;
   border-radius: 15px;
   left: 35%;
-  top: 40%;
+  top: 20%;
   align-items: center;
   /* transform: translateX(-50%) translateY(-50%); */
   justify-content: center;
@@ -58,7 +58,9 @@
   top: 35%;
   height: 30%;
   width: 30%;
-  color: #b2beb5;
+  /* color: #b2beb5; */
+  color: red;
+  font-weight: bold;
 }
 /* tag */
 .tag-container{
